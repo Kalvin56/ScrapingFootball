@@ -70,7 +70,7 @@ class FonctionsScrap
                 };
 
                 var API_KEY_HUGGING_FACE = DotNetEnv.Env.GetString("API_KEY_HUGGING_FACE");
-                var urlHuggingFace = "https://api-inference.huggingface.co/models/csebuetnlp/mT5_multilingual_XLSum";
+                var urlHuggingFace = "https://api-inference.huggingface.co/models/moussaKam/barthez-orangesum-abstract";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {API_KEY_HUGGING_FACE}");
                 var res = await client.PostAsync(urlHuggingFace, new FormUrlEncodedContent(data));
@@ -149,7 +149,7 @@ class FonctionsScrap
                 };
 
                 var API_KEY_HUGGING_FACE = DotNetEnv.Env.GetString("API_KEY_HUGGING_FACE");
-                var urlHuggingFace = "https://api-inference.huggingface.co/models/csebuetnlp/mT5_multilingual_XLSum";
+                var urlHuggingFace = "https://api-inference.huggingface.co/models/moussaKam/barthez-orangesum-abstract";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {API_KEY_HUGGING_FACE}");
                 var res = await client.PostAsync(urlHuggingFace, new FormUrlEncodedContent(data));
