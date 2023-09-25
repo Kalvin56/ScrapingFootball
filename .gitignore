@@ -1,2 +1,4 @@
 front/node_modules
 script/Sraping/bin/.env
+docker-entrypoint-initdb.d/*.js
+.env

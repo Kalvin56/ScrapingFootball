@@ -1,0 +1,13 @@
+print('Start #################################################################');
+
+db = db.getSiblingDB('${DB}');
+db.createUser(
+  {
+    user: '${USER}',
+    pwd: '${PASSWORD}',
+    roles: [{ role: 'readWrite', db: '${DB}' }],
+  },
+);
+db.createCollection('commands');
+
+print('END #################################################################');
