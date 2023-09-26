@@ -1,0 +1,12 @@
+.tweet-style {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0 auto; /* Pour centrer le cadre */
+    width: 40%; /* Prend 60% de la largeur de la page */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  

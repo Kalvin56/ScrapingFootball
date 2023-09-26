@@ -4,6 +4,7 @@ using System.Text;
 using System;
 using static System.Net.WebRequestMethods;
 using System.Text.Json;
+using System.Net.Http;
 using System.Net.Http.Json;
 using Microsoft.VisualBasic;
 using System.Text.Json.Serialization;
@@ -87,7 +88,6 @@ class FonctionsScrap
             }
 
         }
-
         return listeArticles;
     }
 
@@ -167,6 +167,37 @@ class FonctionsScrap
         }
 
         return listeArticles;
+    }
+
+    public static async Task SaveArticle(string url, string text)
+    {
+        using (HttpClient httpClient = new HttpClient())
+        {
+            string baseUrl = DotNetEnv.Env.GetString("API_URL"); ;
+            var requestBody = new
+            {
+                url = url,
+                text = text
+            };
+
+            // Sérialisation de l'objet en JSON
+            string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
+
+            // Créez le contenu de la requête à partir du corps
+            HttpContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            // Envoie une requête POST à l'URL spécifiée avec le contenu
+            HttpResponseMessage response = await httpClient.PostAsync($"{baseUrl}/news", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+                string responseContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Réponse du serveur : " + responseContent);
+            }
+            else
+            {
+                Console.WriteLine("Erreur HTTP : " + response.StatusCode);
+            }
+        }
     }
 }
 
