@@ -1,14 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
 using System.Text;
-using System;
-using static System.Net.WebRequestMethods;
-using System.Text.Json;
-using System.Net.Http;
-using System.Net.Http.Json;
-using Microsoft.VisualBasic;
-using System.Text.Json.Serialization;
-using System.Reflection.Metadata;
 
 class FonctionsScrap
 {
