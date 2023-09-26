@@ -1,7 +1,11 @@
 const { News } = require("../Model/News");
 
 const create = (req, res) => {
-	News.create(req.body)
+	let creationurl = req.body.url;
+	News.findOneAndUpdate({url: creationurl},req.body, {
+		new: true,
+		upsert: true
+	})
 		.then((result) => res.status(201).json(result))
 		.catch((error) => res.status(400).json({
 			message: error?.message || "Une erreur est survenue",

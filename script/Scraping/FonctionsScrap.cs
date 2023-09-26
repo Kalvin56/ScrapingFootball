@@ -165,7 +165,7 @@ class FonctionsScrap
     {
         using (HttpClient httpClient = new HttpClient())
         {
-            string baseUrl = DotNetEnv.Env.GetString("API_URL"); ;
+            string baseUrl = DotNetEnv.Env.GetString("API_URL");
             var requestBody = new
             {
                 url = url,
