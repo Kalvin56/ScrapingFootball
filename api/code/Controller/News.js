@@ -17,26 +17,28 @@ const create = (req, res) => {
 				Key: key,
 				Body: buffer,
 			};
-			// sauvegarde de l'image dans un bucket aws s3
-			s3.putObject(params, (err, data) => {
-				if (err) {
-					res.status(400).json({
-						message: "Erreur lors du stockage de l'image dans S3",
-					})
-				} else {
-					console.log('L\'image a été stockée avec succès dans S3');
-					newBody = {...req.body, s3key: key}
-					// ajout de la news en bdd
-					News.findOneAndUpdate({url: creationurl},newBody, {
-						new: true,
-						upsert: true
-					})
-						.then((result) => res.status(201).json(result))
-						.catch((error) => res.status(400).json({
-							message: error?.message || "Une erreur est survenue",
-						}))
-				}
-			});
+			newBody = {...req.body, s3key: key}
+			// ajout de la news en bdd
+			News.findOneAndUpdate({url: creationurl},newBody, {
+				new: true,
+				upsert: true
+			})
+				.then((result) => {
+					// sauvegarde de l'image dans un bucket aws s3
+					s3.putObject(params, (err, data) => {
+						if (err) {
+							res.status(400).json({
+								message: "Erreur lors du stockage de l'image dans S3",
+							})
+						} else {
+							console.log('L\'image a été stockée avec succès dans S3');
+							return res.status(201).json(result)
+						}
+					});
+				})
+				.catch((error) => res.status(400).json({
+					message: error?.message || "Une erreur est survenue",
+				}))
 		}).catch((error) => res.status(400).json({
 			message: error?.message || "Une erreur est survenue",
 		}))
