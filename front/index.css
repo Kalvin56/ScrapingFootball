@@ -1,12 +1,54 @@
-.tweet-style {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 0 auto; /* Pour centrer le cadre */
-    width: 40%; /* Prend 60% de la largeur de la page */
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
+/* Style pour la scrollbar */
+body {
+  font-family: 'Roboto', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Style pour la scrollbar Chrome */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#news-container {
+  max-width: 100%; /* Occupe 50% de la page en largeur */
+  margin: 0 auto; /* Centrer le container horizontalement */
+  width: 50%;
+  max-height: 90vh; /* Hauteur maximale du container */
+}
+
+.item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.item img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.item p {
+  margin: 5px;
+  text-align: center;
+  word-wrap: break-word;
+}

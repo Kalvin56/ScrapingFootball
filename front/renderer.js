@@ -1,7 +1,7 @@
 const { ipcRenderer } = require('electron');
 
 async function fetchData() {
-  const url = 'http://localhost:8088/api/news';
+  const url = process.env.API_URL+'/news';
 
   try {
     const response = await fetch(url);
@@ -22,13 +22,21 @@ function displayData(data) {
   
     // Efface le contenu précédent du conteneur
     newsContainer.innerHTML = '';
-  
-    // Boucle à travers les données et affiche le champ 'text' de chaque objet
+
     data.forEach(item => {
-      const newsItem = document.createElement('div');
-      newsItem.classList.add('tweet-style');  // Ajouter une classe pour le style tweet
-      newsItem.textContent = item.text; // Affiche le champ 'text'
-      newsContainer.appendChild(newsItem);
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('item');
+  
+      const img = document.createElement('img');
+      img.src = "data:image/png;base64,"+item.image; // Remplacez par le champ correspondant de votre objet
+  
+      const text = document.createElement('p');
+      text.textContent = item.text; // Remplacez par le champ correspondant de votre objet
+  
+      itemDiv.appendChild(img);
+      itemDiv.appendChild(text);
+  
+      newsContainer.appendChild(itemDiv);
     });
   }
   
