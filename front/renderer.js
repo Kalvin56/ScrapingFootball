@@ -1,4 +1,22 @@
 const { ipcRenderer } = require('electron');
+const { exec } = require('child_process');
+
+const execCommand = () => {
+  exec('scrapnews',
+        (error, stdout, stderr) => {
+            console.log(stdout);
+            console.log(stderr);
+            if (error !== null) {
+                console.log(`exec error: ${error}`);
+            }
+        });
+}
+
+
+const onClickScript = () => {
+  execCommand()
+  setInterval(function(){fetchData()},45000);
+}
 
 async function fetchData() {
   const url = process.env.API_URL+'/news';
