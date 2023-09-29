@@ -15,3 +15,4 @@ Dans le dossier api, créer un .env à partir du template
 Dans le dossier docker-entrypoint-initdb.d, créer le fichier mongo-init.js à partir du template  
 Dans le dossier script/Scraping/bin/Debug/net6.0, créer le fichier .env à parir du template  
 Lancer la commande `docker-compose up` depuis la racine
+Lancer la commande `dotnet tool install --global --version 1.0.0  --add-source ./scrapnews Scraping`
