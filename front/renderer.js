@@ -1,5 +1,6 @@
 const { ipcRenderer } = require('electron');
 const { exec } = require('child_process');
+const btn = document.getElementById('btn-custom');
 
 const execCommand = () => {
   exec('scrapnews',
@@ -15,10 +16,12 @@ const execCommand = () => {
 
 const onClickScript = () => {
   execCommand()
+  btn.disabled = true;
   setInterval(function(){fetchData()},45000);
 }
 
 async function fetchData() {
+  btn.disabled = false;
   const url = process.env.API_URL+'/news';
 
   try {
