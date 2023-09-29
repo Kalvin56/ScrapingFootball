@@ -5,10 +5,6 @@ body {
   scrollbar-color: #ccc transparent;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #f0f0f0;
 }
 
@@ -51,4 +47,25 @@ body::-webkit-scrollbar-track {
   margin: 5px;
   text-align: center;
   word-wrap: break-word;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  height: 64px;
+  background-color: #DC4026;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  color: white;
+}
+
+header h2 {
+  margin-left: 8px;
 }
